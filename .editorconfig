@@ -1,11 +1,11 @@
 root = true
 
-[*.js]
+[{*.js,*.ts,*.tsx,*.jsx}]
 charset = utf-8
 indent_style = space
 indent_size = 2
 
 
-[{.travis.yml,package.json,.eslintrc,.babelrc}]
+[{.travis.yml,*.json,.eslintrc,.babelrc}]
 indent_style = space
 indent_size = 2

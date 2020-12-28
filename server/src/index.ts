@@ -1,11 +1,43 @@
-import express from 'express';
+import "reflect-metadata";
+import Container from 'typedi'
+import { createConnection, useContainer } from 'typeorm'
 
-const app = express();
-const PORT = 8000;
+import express from 'express'
+import { TYPEORMConfig } from "./config";
+import buildApolloServer from './apollo'
+import cors from 'cors'
 
-console.log(process.env.NODE_ENV);
+const app = express()
+const PORT = 8000
 
-app.get('/', (req, res) => res.send('Express + TypeScript Server'));
-app.listen(PORT, () => {
-  console.log(`⚡️[server]: Server is running at https://localhost:${PORT}`);
-});
+console.log(process.env.NODE_ENV)
+
+useContainer(Container)
+
+const main = async () => {
+  try {
+    await createConnection({
+      ...TYPEORMConfig,
+    })
+
+    const apollo = await buildApolloServer()
+
+    const app = express()
+    app.use(
+      cors({
+        credentials: true,
+      }),
+    )
+
+    apollo.applyMiddleware({ app })
+
+    app.get('/', (req, res) => res.send('Express + TypeScript Server'))
+    app.listen(PORT, () => {
+      console.log(`⚡️[server]: Server is running at https://localhost:${PORT}`)
+    })
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+main();

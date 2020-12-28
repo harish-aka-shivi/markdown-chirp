@@ -5,18 +5,18 @@
   "description": "Markdown twitter",
   "main": "index.js",
   "license": "MIT",
-  "workspaces": [
-    "client",
-    "server"
-  ],
   "scripts": {
     "start": "cd server && yarn start:prod",
     "start:dev": "cd server && yarn start:dev",
     "test": "cd server && yarn test"
   },
   "dependencies": {
+    "apollo-server-express": "^2.19.1",
+    "cors": "^2.8.5",
+    "dotenv-safe": "^8.2.0"
   },
   "devDependencies": {
+    "@types/dotenv-safe": "^8.1.1",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-plugin-import": "^2.20.1",
