@@ -3,7 +3,8 @@ import { GraphQLError, GraphQLFormattedError } from 'graphql'
 import { AuthChecker, buildSchema } from 'type-graphql'
 import Container from 'typedi'
 
-import { IContext } from './interfaces/context'
+import { IContext } from './interfaces/context';
+
 // import { isAuth } from './utils/middlewares/isAuth'
 
 export default async () => {

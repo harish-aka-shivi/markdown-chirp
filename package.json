@@ -13,7 +13,8 @@
   "dependencies": {
     "apollo-server-express": "^2.19.1",
     "cors": "^2.8.5",
-    "dotenv-safe": "^8.2.0"
+    "dotenv-safe": "^8.2.0",
+    "express-jwt": "^6.0.0"
   },
   "devDependencies": {
     "@types/dotenv-safe": "^8.1.1",

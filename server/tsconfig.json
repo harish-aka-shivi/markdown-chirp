@@ -1,19 +1,30 @@
 {
   "compilerOptions": {
-    "target": "esnext",
+    "target": "es2016",
     "module": "commonjs",
     "rootDir": "./",
     "outDir": "./build",
     "esModuleInterop": true,
     "strict": true,
+    "moduleResolution": "node",
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "lib": ["es2018", "esnext.asynciterable"],
+    "strictNullChecks": true,
+    "skipLibCheck": true,
+    "lib": [
+      "es2016",
+      "esnext.asynciterable",
+      "dom"
+    ],
     "plugins": [
       {
         "name": "typescript-tslint-plugin",
         "jsEnable": true
       }
     ],
+    "typeRoots": [
+			"src/types",
+			"node_modules/@types"
+		]
   }
 }
