@@ -6,6 +6,7 @@ import express from 'express'
 import { TYPEORMConfig } from "./config";
 import buildApolloServer from './apollo'
 import cors from 'cors'
+import auth from "./middlewares/auth";
 
 const app = express()
 const PORT = 8000
@@ -27,7 +28,9 @@ const main = async () => {
       cors({
         credentials: true,
       }),
-    )
+    );
+    
+    app.use(auth)
 
     apollo.applyMiddleware({ app })
 

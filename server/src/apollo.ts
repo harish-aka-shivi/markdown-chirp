@@ -23,7 +23,7 @@ export default async () => {
 
   return new ApolloServer({
     schema,
-    context: ({ req, res }) => ({ req, res }),
+    context: ({ req, res }) => ({ req, res, user: req.user, token: req.token }),
     formatError,
   })
 }
