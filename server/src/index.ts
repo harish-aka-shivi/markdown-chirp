@@ -7,9 +7,7 @@ import { TYPEORMConfig } from "./config";
 import buildApolloServer from './apollo'
 import cors from 'cors'
 import auth from "./middlewares/auth";
-
-const app = express()
-const PORT = 8000
+import { SERVER_PORT } from "./config/envVariables";
 
 console.log(process.env.NODE_ENV)
 
@@ -30,13 +28,14 @@ const main = async () => {
       }),
     );
     
-    app.use(auth)
+    // app.use(auth)
 
     apollo.applyMiddleware({ app })
 
-    app.get('/', (req, res) => res.send('Express + TypeScript Server'))
-    app.listen(PORT, () => {
-      console.log(`⚡️[server]: Server is running at https://localhost:${PORT}`)
+    app.get('/', (req, res) => res.send('Express + TypeScript Server'));
+
+    app.listen(SERVER_PORT, () => {
+      console.log(`⚡️[server]: Server is running at https://localhost:${SERVER_PORT}`)
     })
   } catch (e) {
     console.error(e)
